@@ -8,7 +8,7 @@ PAI(Personality AI)는 '개성 형성이 가능한 에이전트 플랫폼 기술
 
 본 연구는 과학기술정보통신부와 정보통신기획평가원의 ‘사람 중심 인공지능 핵심 원천기술 개발’ 사업의 지원을 받아 수행되고 있습니다.  
 <p align="center">
-  <img src="https://github.com/user-attachments/assets/ce4fdcc7-3895-4506-9262-da45b0f244c8" height="500">
+  <img src="https://github.com/user-attachments/assets/ce4fdcc7-3895-4506-9262-da45b0f244c8" height="450">
 </p>
 
 <br/>
