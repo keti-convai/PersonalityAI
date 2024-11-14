@@ -12,10 +12,12 @@ PAI(Personality AI)는 '개성 형성이 가능한 에이전트 플랫폼 기술
 
 **1단계 연구 성과**
 - Grounding Visual Representation with Texts(GVRT)  
-  https://github.com/seonwoo-min/GVRT
-
+  https://github.com/seonwoo-min/GVRT  
+  ![GVRT_image](https://github.com/user-attachments/assets/d26f1fed-f829-4119-82ef-e26ba64c5c2b)
+  
 - Class Aware Text(CAT) generator  
   https://github.com/NaaeKwon/CAT
+  ![CAT_image](https://github.com/user-attachments/assets/7552614a-cd48-4a83-975f-0f56306fa59d)  
 
 - Stable Baslines with JAX & Haiku  
   https://github.com/kwk2696/sb3-jax-haiku
