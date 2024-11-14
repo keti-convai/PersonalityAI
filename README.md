@@ -1,20 +1,21 @@
 
 # PAI (Personality AI)
 
-PAI(Personality AI)는 '개성 형성이 가능한 에이전트 플랫폼 기술 개발' 연구를 위한 프로젝트로, 인공지능에 인간의 개성을 부여하는 연구를 목표로 하고 있습니다.
+PAI(Personality AI)는 '개성 형성이 가능한 에이전트 플랫폼 기술 개발' 연구를 위한 프로젝트로, 인공지능에 인간의 개성을 부여하는 연구를 목표로 하고 있습니다.   
 
+본 연구는 과학기술정보통신부와 정보통신기획평가원의 지원을 받아 ‘사람 중심 인공지능 핵심 원천기술 개발’ 사업의 일환으로 수행되고 있습니다.  
 
-본 연구는 과학기술정보통신부와 정보통신기획평가원의 지원을 받아 ‘사람 중심 인공지능 핵심 원천기술 개발’ 사업의 일환으로 수행되고 있습니다.
-   
+<br/>
 
-
-## 관련 기사
-한·프·일, 교감형 AI 공동연구…AI에 인간 개성 부여, 이데일리
-https://zdnet.co.kr/view/?no=20230920130357  
+## 관련 기사  
+- 한·프·일, 교감형 AI 공동연구…AI에 인간 개성 부여, 이데일리  
+  https://zdnet.co.kr/view/?no=20230920130357  
   
-영화 ‘her’처럼…AI에 개성을, 100억 규모 국제 공동연구 막올라, 지디넷코리아 
-https://m.edaily.co.kr/News/Read?newsId=02345206635742088&mediaCodeNo=257  
-  
+- 영화 ‘her’처럼…AI에 개성을, 100억 규모 국제 공동연구 막올라, 지디넷코리아  
+  https://m.edaily.co.kr/News/Read?newsId=02345206635742088&mediaCodeNo=257
+
+<br/>
+
 ## 단계별 연구 성과
 
 **1단계 연구 성과**
@@ -31,5 +32,4 @@ https://m.edaily.co.kr/News/Read?newsId=02345206635742088&mediaCodeNo=257
 
 - Overview of Personality Trait Prediction Using Single-Modality or Multi-Modality Approaches  
   https://github.com/ISSR-CBNU/Personality-trait-prediction
-
 
