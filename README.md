@@ -56,7 +56,11 @@ PAI(Personality AI)는 '개성 형성이 가능한 에이전트 플랫폼 기술
 - [**Stable Baslines with JAX & Haiku**](https://github.com/kwk2696/sb3-jax-haiku)    
 
 <br/>
+     
+- [**Overview of Personality Trait Prediction**](https://github.com/ISSR-CBNU/Personality-trait-prediction)    
+  개성 인식을 위한 CNN 기반의 VGG16, ResNet, Inception V2 모델과, Transformer 기반의 Video Swin Transformer, FAt Transformer, MAE(Masked AutoEncoder), ViVit(Video Vision Transforemr) 모델들의 성능 비교를 위한 연구
+
+<br/>
   
-   
-- [**Overview of Personality Trait Prediction Using Single-Modality or Multi-Modality Approaches**](https://github.com/ISSR-CBNU/Personality-trait-prediction)    
-  언어적(Verbal), 비언어적(non-Verbal) 요소기반 OCEAN 개성 인식 모델
+- [**OCEAN Domain Adaptation Language Model**](https://github.com/bytecell/PersonalityAI)    
+  개성 인식을 위한 데이터 전처리, 시각화, 언어모델의 사전 학습, 파인 튜닝, 디코더 모델(SOLAR)의 추론을 포함하는 연구
