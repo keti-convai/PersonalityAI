@@ -1,4 +1,4 @@
-<p align="center">
+![image](https://github.com/user-attachments/assets/0553aa81-f81d-4101-bcaa-ea92bd26e121)<p align="center">
   <img src="https://github.com/user-attachments/assets/9b5a9ad5-01d1-4227-94cb-93515b99b4b3" height="300">
 </p>
 
@@ -27,9 +27,9 @@ PAI(Personality AI)는 '개성 형성이 가능한 에이전트 플랫폼 기술
 **1단계 연구 성과**
 - [**A-LLM Model Base**](https://huggingface.co/AcrylaLLM/Llama-3-8B-Jonathan-aLLM-Instruct-v1.0)  
   **개성 모델의 언어적 정보 기반 연동 서비스를 위해 Meta의 LLaMA-3-8B 기반으로 DoRA를 활용해 미세 조정된 LLM으로, 한국어 LLM 리더보드 오픈소스 1위 달성 (2024년 10월 기준)**   
-  A-LLM은 Meta의 Llama-3-8B 아키텍처를 기반으로 구축된 한국어 대규모 언어 모델로 포괄적인 한국어 데이터 세트에서  
+  Jonathan A-LLM은 Meta의 Llama-3-8B 아키텍처를 기반으로 구축된 한국어 대규모 언어 모델로 포괄적인 한국어 데이터 세트에서  
   DoRA(Weight-Decomposed Low-Rank Adaptation) 방법론을 사용하여 훈련되었으며, 한국어 이해 및 생성에 최적화되어 Horangi Korean LLM Leaderboard에서 오픈 소스 한국어 모델 중 최첨단 성능을 달성  
-  <img src="https://github.com/user-attachments/assets/6a9c1bd8-65f3-43aa-a038-d56136c62a94" height="500">
+  <img src="https://github.com/user-attachments/assets/cf09ce28-f223-418f-9eb8-05c53cb2ac11" height="500">
 
 <br/>
   
