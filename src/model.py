@@ -15,7 +15,7 @@ from torchmetrics import classification as clf
 from torchmetrics import regression as reg
 
 
-class LitKetiCorpusMultimodalRegressor(pl.LightningModule):
+class PersonalityRegressor(pl.LightningModule):
 
     def __init__(
             self,
@@ -26,7 +26,7 @@ class LitKetiCorpusMultimodalRegressor(pl.LightningModule):
             optimizer_params
         ):
         super().__init__()
-        self.model = KetiCorpusMultimodalRecognizer(
+        self.model = PersonalityRecognizer(
             vision_config=vision_config,
             audio_config=audio_config,
             text_config=text_config
@@ -130,7 +130,7 @@ class LitKetiCorpusMultimodalRegressor(pl.LightningModule):
         return [optimizer], [scheduler]
 
 
-class LitKetiCorpusMultimodalClassifier(pl.LightningModule):
+class PersonalityClassifier(pl.LightningModule):
 
     def __init__(
             self,
@@ -142,7 +142,7 @@ class LitKetiCorpusMultimodalClassifier(pl.LightningModule):
         ):
         super().__init__()
         self.save_hyperparameters()
-        self.model = KetiCorpusMultimodalRecognizer(
+        self.model = PersonalityRecognizer(
             vision_config=vision_config,
             audio_config=audio_config,
             text_config=text_config
@@ -262,7 +262,7 @@ class LitKetiCorpusMultimodalClassifier(pl.LightningModule):
         return [optimizer], [scheduler]
 
 
-class KetiCorpusMultimodalRecognizer(nn.Module):
+class PersonalityRecognizer(nn.Module):
 
     def __init__(
             self,
@@ -412,7 +412,7 @@ if __name__ == "__main__":
         'weight_decay': config.get('weight_decay')
     }
     big5 = 'opn'
-    clf_model = LitKetiCorpusMultimodalClassifier(
+    clf_model = PersonalityClassifier(
                 vision_config={"model_size": "base"},
                 text_config={"pretrained_model": "klue/roberta-base"},
                 audio_config={"pretrained_model": "MIT/ast-finetuned-audioset-10-10-0.4593"},
