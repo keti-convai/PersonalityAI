@@ -12,28 +12,28 @@ import pytorchvideo.transforms
 from torchvision import transforms
 from pytorch_lightning import loggers as pl_loggers
 
-from model import LitKetiCorpusMultimodalClassifier, LitKetiCorpusMultimodalRegressor
-from datamodule import KetiCorpusMultiModalDataModule
+from model import PersonalityClassifier, PersonalityRegressor
+from datamodule import PersonalityRecognizer
 
 
 os.environ["CUDA_VISIBLE_DEVICES"] = "0"
 
 
 def set_seed(seed):
-    torch.manual_seed(seed)  # PyTorch CPU 시드 설정
-    torch.cuda.manual_seed(seed)  # PyTorch GPU 시드 설정
+    torch.manual_seed(seed) 
+    torch.cuda.manual_seed(seed) 
     torch.cuda.manual_seed_all(
         seed
-    )  # 여러 GPU를 사용하는 경우 모든 GPU에 동일한 시드를 설정
-    np.random.seed(seed)  # NumPy 시드 설정
-    random.seed(seed)  # Python 내장 random 모듈 시드 설정
+    ) 
+    np.random.seed(seed) 
+    random.seed(seed) 
 
-    # 재현 가능한 결과를 위해 추가적인 설정
+   
     torch.backends.cudnn.deterministic = (
-        True  # CuDNN에서 일관성 있는 연산을 위해 결정론적 동작 설정
+        True 
     )
     torch.backends.cudnn.benchmark = (
-        False  # 성능 최적화를 비활성화 (결정론적 동작을 위해 필요)
+        False
     )
 
 
@@ -47,7 +47,7 @@ def setup_datamodule(config, stage='fit'):
     ])
     audio_transform = None
 
-    datamodule = KetiCorpusMultiModalDataModule(config=config, video_transform=video_transform, audio_transform=audio_transform)
+    datamodule = ModalDataModule(config=config, video_transform=video_transform, audio_transform=audio_transform)
     datamodule.setup(stage=stage)
 
     if stage == "fit":
@@ -73,7 +73,7 @@ def load_model(checkpoint_path, task="regression", **kwargs):
     optimizer_params = kwargs.get('optimizer_params')
 
     if task in ['reg', 'regression']:
-        model = LitKetiCorpusMultimodalRegressor.load_from_checkpoint(
+        model = PersonalityRegressor.load_from_checkpoint(
             checkpoint_path=checkpoint_path,
             vision_config=vision_config,
             audio_config=audio_config,
@@ -81,18 +81,9 @@ def load_model(checkpoint_path, task="regression", **kwargs):
             optimizer_class=optimizer_class,
             optimizer_params=optimizer_params
         )
-        # model = LitKetiCorpusMultimodalRegressor(
-        #                 vision_config={"model_size": "base"},
-        #                 text_config={"pretrained_model": "klue/roberta-base"},
-        #                 audio_config={"pretrained_model": "MIT/ast-finetuned-audioset-10-10-0.4593"},
-        #                 optimizer_class=optimizer_class, 
-        #                 optimizer_params=optimizer_params
-        # )
-        # model.load_state_dict(
-        #         torch.load('./models/regression_test_model.ckpt')['state_dict'], strict=False
-        # )
+
     elif task in ['clf', 'cls', 'classification']:
-        model = LitKetiCorpusMultimodalClassifier(
+        model = PersonalityClassifier(
                         vision_config={"model_size": "base"},
                         text_config={"pretrained_model": "klue/roberta-base"},
                         audio_config={"pretrained_model": "MIT/ast-finetuned-audioset-10-10-0.4593"},
@@ -128,13 +119,6 @@ def main(args):
         'weight_decay': config.get('weight_decay')
     }
     
-    print("\n# --------------------- 테스트셋 설명 --------------------- #")
-    print("1. 전체 133개 영상에서 랜덤하게 선택한 15개 영상")
-    print("  - '003', '007', '014', '019', '038', '055', '069', '071', '082', '088', '100', '103', '109', '138', '145'번 참가자의 영상")
-    print("2. 선택된 14개 영상에서 참가자들의 발화 부분만 15초단위의 비디오 클립으로 변환: 총 877개의 영상 클립")
-    print("3. 영상 클립의 비디오 프레임, 오디오, 발화 텍스트를 입력으로 사용.")
-    print("4. Batch 32로 테스트 진행, 사용 GPU는 cuda:0.")
-    print("# ------------------------------------------------------- #\n")
 
     print("\n1. Setup Datasets.")
     datamodule = setup_datamodule(config, stage='test')
@@ -205,20 +189,20 @@ def report_mean_absolute_error(result_dict):
 
 
 def set_seed(seed):
-    torch.manual_seed(seed)  # PyTorch CPU 시드 설정
-    torch.cuda.manual_seed(seed)  # PyTorch GPU 시드 설정
+    torch.manual_seed(seed) 
+    torch.cuda.manual_seed(seed)
     torch.cuda.manual_seed_all(
         seed
-    )  # 여러 GPU를 사용하는 경우 모든 GPU에 동일한 시드를 설정
-    np.random.seed(seed)  # NumPy 시드 설정
-    random.seed(seed)  # Python 내장 random 모듈 시드 설정
+    ) 
+    np.random.seed(seed) 
+    random.seed(seed) 
 
-    # 재현 가능한 결과를 위해 추가적인 설정
+  
     torch.backends.cudnn.deterministic = (
-        True  # CuDNN에서 일관성 있는 연산을 위해 결정론적 동작 설정
+        True 
     )
     torch.backends.cudnn.benchmark = (
-        False  # 성능 최적화를 비활성화 (결정론적 동작을 위해 필요)
+        False 
     )
 
 
