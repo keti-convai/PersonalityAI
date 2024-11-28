@@ -13,10 +13,10 @@ from torchvision import transforms
 from tqdm import tqdm
 
 from model import (
-    LitKetiCorpusMultimodalClassifier,
-    LitKetiCorpusMultimodalRegressor,
+    PersonalityClassifier,
+    PersonalityRegressor,
 )
-from datamodule import KetiCorpusMultiModalDataModule
+from datamodule import MultiModalDataModule
 
 warnings.filterwarnings("ignore")
 
@@ -50,7 +50,7 @@ def main(args):
 
     audio_transform = None
 
-    datamodule = KetiCorpusMultiModalDataModule(
+    datamodule = MultiModalDataModule(
         config=config, video_transform=video_transform, audio_transform=audio_transform
     )
     datamodule.setup(stage="fit")
@@ -68,7 +68,7 @@ def main(args):
 
     print("2. Set Parameters.")
     if task in ["reg", "regression"]:
-        model = LitKetiCorpusMultimodalRegressor(
+        model = PersonalityRegressor(
             vision_config={"model_size": "base"},
             text_config={"pretrained_model": "klue/roberta-base"},
             audio_config={
@@ -78,7 +78,7 @@ def main(args):
             optimizer_params=optimizer_params,
         )
     elif task in ["clf", "cls", "classification"]:
-        model = LitKetiCorpusMultimodalClassifier(
+        model = PersonalityClassifier(
             vision_config={"model_size": "base"},
             text_config={"pretrained_model": "klue/roberta-base"},
             audio_config={
