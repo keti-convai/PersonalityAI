@@ -25,32 +25,31 @@ PAD, SEP, UNK, BOS, EOS = "<pad>", "</s>", "<unk>", "<s>", "</s>"
 
 
 
-class KetiCorpusDataset(Dataset):
-
-    OCEAN_AVG = {
-        'openness': 0.668582, 
-        'conscientiousness': 0.668582,
-        'extraversion': 0.642101,
-        'agreeableness': 0.662362,
-        'neuroticism': 0.531536
-    }
+class Corpus:
     
-    OCEAN_STD = {
-        'openness': 0.097586, 
-        'conscientiousness': 0.104025, 
-        'extraversion': 0.116998, 
-        'agreeableness': 0.082447, 
-        'neuroticism': 0.119315
-    }
-    
-    FACET_COEF = {
-        'openness': [0.25, 0.22, 0.18, 0.21, 0.09, 0.05],
-        'conscientiousness': [0.17, 0.17, 0.17, 0.21, 0.09, 0.19],
-        'extraversion': [0.16, 0.14, 0.17, 0.18, 0.19, 0.16],
-        'agreeableness': [0.16, 0.17, 0.16, 0.16, 0.21, 0.14],
-        'neuroticism': [0.2, 0.16, 0.16, 0.12, 0.2, 0.16]
-    }
+    def __init__(self, ocean_avg: Dict[str, float] = None, ocean_std: Dict[str, float] = None, facet_coef: Dict[str, List[float]] = None):
+        """
+        Initialize the dataset with user-defined OCEAN_AVG, OCEAN_STD, and FACET_COEF values.
 
+        Args:
+            ocean_avg (Dict[str, float]): Mean values for each OCEAN dimension.
+            ocean_std (Dict[str, float]): Standard deviations for each OCEAN dimension.
+            facet_coef (Dict[str, List[float]]): Facet coefficient weights for each OCEAN dimension.
+
+        Raises:
+            ValueError: If any of the required arguments are missing or invalid.
+        """
+        if ocean_avg is None:
+            raise ValueError("OCEAN_AVG must be provided and cannot be None.")
+        if ocean_std is None:
+            raise ValueError("OCEAN_STD must be provided and cannot be None.")
+        if facet_coef is None:
+            raise ValueError("FACET_COEF must be provided and cannot be None.")
+
+        self.OCEAN_AVG = ocean_avg
+        self.OCEAN_STD = ocean_std
+        self.FACET_COEF = facet_coef
+    
     def _annotate(
             self, 
             video_clip_id: str, 
@@ -73,7 +72,7 @@ class KetiCorpusDataset(Dataset):
         labels = [self._normalize(score, self.OCEAN_AVG[ocean], self.OCEAN_STD[ocean]) if z_score == True else score
                     for ocean, score in labels.items()]
         return labels
-    
+
     def _annotate_random_facets(self, facets, n_facets=5, replace=False) -> Dict[str, float]:
         labels = {}
         for ocean, fcts in facets.items():
@@ -100,7 +99,7 @@ class KetiCorpusDataset(Dataset):
 # ------------------------------------------------ MultiModal Dataset ------------------------------------------------ #
 
 
-class KetiCorpusMultiModalDataset(KetiCorpusDataset):
+class MultiModalDataset(Corpus):
 
     def __init__(
             self, 
@@ -131,7 +130,7 @@ class KetiCorpusMultiModalDataset(KetiCorpusDataset):
         self.max_len = max_len
         self.return_video_clip_id = return_video_clip_id
 
-        self.video_dataset = KetiCorpusVideoDataset(
+        self.video_dataset = VideoDataset(
             data_path=data_path,
             video_dir=video_dir,
             annotation_path=annotation_path,
@@ -148,7 +147,7 @@ class KetiCorpusMultiModalDataset(KetiCorpusDataset):
             return_video_clip_id=True
         )
 
-        self.audio_dataset = KetiCorpusAudioDataset(
+        self.audio_dataset = AudioDataset(
             data_path=data_path,
             audio_dir=audio_dir,
             annotation_path=annotation_path,
@@ -167,7 +166,7 @@ class KetiCorpusMultiModalDataset(KetiCorpusDataset):
         audio_ids = [data[0] for data in self.audio_dataset.dataset]
         video_clip_ids = [video_clip_id for video_clip_id in video_ids if video_clip_id in audio_ids]
         
-        self.text_dataset = KetiCorpusTranscriptionDataset(
+        self.text_dataset = TranscriptionDataset(
             data_path=data_path,
             annotation_path=None,
             tokenizer=tokenizer,
@@ -220,7 +219,7 @@ class KetiCorpusMultiModalDataset(KetiCorpusDataset):
         
 # ------------------------------------------------ Video Dataset ------------------------------------------------ #
 
-class KetiCorpusVideoDataset(KetiCorpusDataset):
+class VideoDataset(Corpus):
 
     def __init__(
             self, 
@@ -312,7 +311,7 @@ class KetiCorpusVideoDataset(KetiCorpusDataset):
 # ------------------------------------------------ Audio Dataset ------------------------------------------------ #
 
 
-class KetiCorpusAudioDataset(KetiCorpusDataset):
+class AudioDataset(Corpus):
 
     def __init__(
             self,
@@ -393,7 +392,7 @@ class KetiCorpusAudioDataset(KetiCorpusDataset):
 # ------------------------------------------------ Transcription Dataset ------------------------------------------------ #
 
 
-class KetiCorpusTranscriptionDataset(KetiCorpusDataset):
+class TranscriptionDataset(Corpus):
 
     def __init__(
             self, 
@@ -541,15 +540,15 @@ if __name__ == "__main__":
     # video_dir = 'D:/PAI데이터/samples/train/frames'
     # audio_dir = 'D:/PAI데이터/samples/train/wav'
     # data_path = 'D:/PAI데이터/samples/train/transcription_train.pkl'
-    video_dir = '/Volumes/p31/PAI데이터/samples/train/frames'
-    audio_dir = '/Volumes/p31/PAI데이터/samples/train/wav'
+    video_dir = '/samples/train/frames'
+    audio_dir = '/samples/train/wav'
     annotation_path = './data/annotation.pkl'
 
-    print("KetiCorpusDataset Test Code\n")
+    print("Corpus Test Code\n")
 
     print("1. Dataset Test Code")
     print("1-1: Video Dataset")
-    video_dataset = KetiCorpusVideoDataset(
+    video_dataset = VideoDataset(
         data_path=data_path, video_dir=video_dir, annotation_path=annotation_path, return_video_clip_id=True
     )
 
@@ -561,7 +560,7 @@ if __name__ == "__main__":
     print(f"Video Dataset Labels: {labels}\n")
 
     print("1-2: Audio Dataset")
-    audio_dataset = KetiCorpusAudioDataset(
+    audio_dataset = AudioDataset(
         data_path=data_path, audio_dir=audio_dir, annotation_path=annotation_path, return_video_clip_id=True
     )
 
@@ -573,7 +572,7 @@ if __name__ == "__main__":
     print(f"Audio Dataset Labels: {labels}\n")
 
     print("1-3: Transcription Dataset")
-    text_dataset = KetiCorpusTranscriptionDataset(
+    text_dataset = TranscriptionDataset(
         data_path=data_path, annotation_path=annotation_path, return_video_clip_id=True
     )
 
@@ -586,7 +585,7 @@ if __name__ == "__main__":
 
 
     print("1-4: MultiModal Dataset")
-    keti_dataset = KetiCorpusMultiModalDataset(
+    dataset = MultiModalDataset(
         data_path=data_path, 
         video_dir=video_dir,
         audio_dir=audio_dir,
@@ -594,10 +593,10 @@ if __name__ == "__main__":
         return_video_clip_id=True
     )
 
-    print(f"multimodal dataset length: {len(keti_dataset)}")
-    # index = random.randint(0, len(keti_dataset) - 1)
+    print(f"multimodal dataset length: {len(dataset)}")
+    # index = random.randint(0, len(dataset) - 1)
     index = 4
-    video_clip_id, frames, audio, text, labels = keti_dataset[index]
+    video_clip_id, frames, audio, text, labels = dataset[index]
     print(f"[{index}]: {video_clip_id}")
     print(f"Video Frame shape: {frames.shape}")
     print(f"Audio shape: {audio.shape}")
@@ -624,8 +623,8 @@ if __name__ == "__main__":
     #     print(f"[{idx}]: {video_clip_id} text shape: {text_tensor.shape} labels: {labels}")
 
     print("2-4 MultiModal Dataloader")
-    keti_dataloader = DataLoader(keti_dataset, batch_size=2, shuffle=True, collate_fn=keti_dataset.collate_fn)
-    for idx, batch in enumerate(keti_dataloader):
+    dl = DataLoader(dataset, batch_size=2, shuffle=True, collate_fn=dataset.collate_fn)
+    for idx, batch in enumerate(dataloader):
         video_clip_id, video_tensor, audio_tensor, text_tensor, labels = batch
         print(f"[{idx}]: {video_clip_id}")
         print(f"video shape: {video_tensor.shape} audio shape: {audio_tensor.shape} text shape: {text_tensor.shape} labels: {labels}")
