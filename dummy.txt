@@ -1,1 +1,1 @@
-add contributor
+add contributor;
