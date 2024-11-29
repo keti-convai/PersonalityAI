@@ -21,7 +21,7 @@ from datamodule import MultiModalDataModule
 warnings.filterwarnings("ignore")
 
 
-os.environ["CUDA_VISIBLE_DEVICES"] = "4,5,6,7"
+os.environ["CUDA_VISIBLE_DEVICES"] = "0,1,2,3,4,5,6,7"
 
 
 def load_config(path):
@@ -34,8 +34,6 @@ def main(args):
     task = task = args.task
 
     config = load_config(cfg_path)
-
-    print("1. Load DataModule.\n")
 
     height, width = (112, 112)
     video_transform = transforms.Compose(
@@ -55,8 +53,6 @@ def main(args):
     )
     datamodule.setup(stage="fit")
 
-    print(f"Train Dataset Length: {len(datamodule.train_dataset)}")
-    print(f"Validate Dataset Length: {len(datamodule.val_dataset)}\n")
 
     optimizer_class = optim.AdamW
     optimizer_params = {
@@ -66,7 +62,6 @@ def main(args):
     max_epochs = config.get("max_epochs")
     log_every_n_steps = config.get("log_every_n_steps")
 
-    print("2. Set Parameters.")
     if task in ["reg", "regression"]:
         model = PersonalityRegressor(
             vision_config={"model_size": "base"},
@@ -92,7 +87,6 @@ def main(args):
             strict=False,
         )
 
-    print("3. Init Model.")
     trainer = pl.Trainer(
         logger=pl_loggers.CSVLogger(
             "lightning_logs", name="train", version=f"{task}_v2"
@@ -103,11 +97,8 @@ def main(args):
         precision=16,
     )
 
-    print("4. Classification Model.")
-    print("4.1 Fit Model.")
     trainer.fit(model, datamodule=datamodule)
 
-    print("4.2 Test Model.")
     datamodule.setup(stage="test")
     print(f"Test Dataset Length: {len(datamodule.test_dataset)}")
     trainer.test(model, datamodule=datamodule)
