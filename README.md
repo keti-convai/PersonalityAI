@@ -29,6 +29,7 @@ PAI(Personality AI)는 '개성 형성이 가능한 에이전트 플랫폼 기술
 - [**Big-Five Personality Recognition Model**] (본 레포지토리)  
   자체 구축한 멀티모달 데이터셋으로 학습한 모델을 통해 Big-Five trait로 라벨링된 개성을 분류 및 회귀 방법으로 인식하기 위한 연구
 
+<br/>
 
 - [**Jonathan A-LLM**](https://huggingface.co/AcrylaLLM/Llama-3-8B-Jonathan-aLLM-Instruct-v1.0)  
   **개성 모델의 언어적 정보 기반 연동 서비스를 위해 Meta의 LLaMA-3-8B 기반으로 DoRA를 활용해 미세 조정된 LLM으로, 한국어 LLM 리더보드 오픈소스 1위 달성 (2024년 10월 기준)**   
@@ -57,7 +58,10 @@ PAI(Personality AI)는 '개성 형성이 가능한 에이전트 플랫폼 기술
 
 <br/>
   
-- [**Stable Baslines with JAX & Haiku**](https://github.com/kwk2696/sb3-jax-haiku)    
+- [**Stable Baslines with JAX & Haiku**](https://github.com/kwk2696/sb3-jax-haiku)  
+  Jax & Haiku 기반의 강화학습/모방학습 알고리즘 라이브러리로, 기존 Torch 기반의 알고리즘에 비해 2배 이상의 학습 속도 향상  
+  <img src="https://github.com/user-attachments/assets/bab217d1-9fec-4812-8638-3fc296a4edea" height="250">
+
 
 <br/>
      
