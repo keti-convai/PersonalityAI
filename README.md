@@ -5,6 +5,9 @@
   <img src="https://github.com/user-attachments/assets/90f4cc03-f857-4bba-bfa2-a24404f39be3" height="25">
 </p>  
 
+*본 연구의 성과물은 연구 개발, 교육 등 비영리 목적으로 활용되는 경우 공개 라이선스를 통해 공개하지만, 사업화, 특허 등 영리 목적 활용의 경우 상용화 라이선스를 적용함.*   
+   
+   
 # Personality AI, 'PAI'
 
 PAI(Personality AI)는 '개성 형성이 가능한 에이전트 플랫폼 기술 개발' 연구를 위한 프로젝트로, 인공지능에 인간의 개성을 부여하는 연구를 목표로 하고 있습니다.   
