@@ -1,6 +1,9 @@
 <p align="center">
   <img src="https://github.com/user-attachments/assets/9b5a9ad5-01d1-4227-94cb-93515b99b4b3" height="300">
 </p>
+<p align="center">
+  <img src="https://github.com/user-attachments/assets/90f4cc03-f857-4bba-bfa2-a24404f39be3" height="25">
+</p>  
 
 # Personality AI, 'PAI'
 
