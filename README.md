@@ -27,6 +27,9 @@ PAI(Personality AI)는 '개성 형성이 가능한 에이전트 플랫폼 기술
 - '영화 ‘her’처럼…AI에 개성을, 100억 규모 국제 공동연구 막올라', 지디넷코리아  
   https://m.edaily.co.kr/News/Read?newsId=02345206635742088&mediaCodeNo=257
 
+- '경북교육청 미래교육 행사에서 AI 교육 솔루션으로서 휴먼 키오스크 공개', E동아
+  https://edu.donga.com/news/articleView.html?idxno=100483
+
 <br/>
 
 ## 단계별 연구 성과
@@ -79,3 +82,40 @@ PAI(Personality AI)는 '개성 형성이 가능한 에이전트 플랫폼 기술
   
 - [**OCEAN Domain Adaptation Language Model**](https://github.com/bytecell/PersonalityAI)    
   개성 인식을 위한 데이터 전처리, 시각화, 언어모델의 사전 학습, 파인 튜닝, 디코더 모델(SOLAR)의 추론을 포함하는 연구
+
+<br/>
+
+**2단계 연구 성과**
+
+- [**Personality Recognition & Regression Pre-trained Model**] (본 레포지토리)  
+  과제 전체 결과물 홍보 및 한국인을 대상으로 구축한 데이터로 학습된 개성 인식 분류 및 회귀 사전 학습 모델을 공개하며, 한국인의 self-report 개성 정보가 레이블링된 대규모 데이터셋 구축 결과를 바탕으로 몰입도 높은 개성을 발현하기 위한 정보 및 에이전트의 자기 개선 알고리즘에 활용하기 위한 연구
+
+<br/>
+
+- [**SemanticControl**](https://github.com/mung3477/SemanticControl)  
+  사용자의 의도에 따라 이미지를 변형하여 생성할 수 있는 모델로, 개성, 감성 등을 에이전트가 이미지의 형태로 표현하기 위해서 특정 캐릭터의 제스처, 동작, 표정 등을 텍스트 입력으로 자유롭게 변형할 수 있는 모델에 활용하기 위한 연구
+
+<br/>
+
+- [**Tri-layer Contrative Decoding (TCD)**](https://github.com/KR-0822/TCD)  
+  Vision-Language Model (VLM)의 환각을 저감하여 답변할 수 있는 모델에 대한 소스 코드로, 멀티모달 LLM을 기반으로 환각현상을 저감하여 사용자와 대화를 나눌 수 있는 시스템에 활용하기 위한 연구
+
+<br/>
+
+- [**Prototype-based Regularization**](https://github.com/psb485/HNPR-FSCIL)  
+  멀티모달 임베딩 공간 최적화를 위한 Prototype 기반의 regularization 기법에 대한 소스 코드로, 단일한 임베딩 공간을 활용하여 연속적으로 사용자와 일관성있게 대화를 나누기 위한 임베딩 공간 학습 기법에 활용하기 위한 연구
+
+<br/>
+
+- [**Stream and Query-guided Feature Aggregation**](https://github.com/moonseokha/DuOcc)  
+  사용자와의 대화 중에 시각적인 정보를 시간이 지남에 따라 잃어버리지 않고 유지하여 일관성 있는 챗봇을 구현하기 위해, Stream and Query-guided Feature Aggregation 기반의 멀티모달 임베딩 공간 최적화 기법을 제안하는 연구
+
+<br/>
+
+- [**Personality-recognition**](https://github.com/ISSR-CBNU/Personality-recognition)  
+  영상 및 음성의 멀티모달 융합 기술과 Transformer 계열 모델을 활용하여 Big-Five(OCEAN) 성격 특성을 예측하고 실시간 인식 소프트웨어에 적용 가능한 딥러닝 프레임워크 ViViT, TimeSformer, AST 등 다양한 백본을 통해 언어적·비언어적 요소를 통합 분석하며, 새로운 모델 제안을 위한 표준 비교 실험(Baseline) 환경 구축 및 성격 인식 모델의 성능 최적화를 수행하는 연구
+
+<br/>
+
+- [**PersonalityAI**](https://github.com/bytecell/PersonalityAI)  
+  도메인 적응형 사전학습(DAPT) 기법을 적용하여 텍스트 및 멀티모달 데이터를 기반으로 Big-Five(OCEAN) 성격 특성을 정밀하게 분석하는 개성 인식 언어 모델 및 학습 시스템 인코더·디코더 기반 모델의 도메인 특화 학습과 Instruction Tuning, 멀티모달 융합 튜닝을 지원하며 데이터 전처리부터 시각화 및 추론에 이르는 전 과정을 통합하여 개성 인식 성능을 최적화하는 연구
