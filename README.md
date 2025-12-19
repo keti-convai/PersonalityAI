@@ -87,7 +87,7 @@ PAI(Personality AI)는 '개성 형성이 가능한 에이전트 플랫폼 기술
 
 **2단계 연구 성과**
 
-- [**Personality Recognition & Regression Pre-trained Model**] (본 레포지토리)  
+- [**Big-Five Personality Recognition Model**] (본 레포지토리)  
   과제 전체 결과물 홍보 및 한국인을 대상으로 구축한 데이터로 학습된 개성 인식 분류 및 회귀 사전 학습 모델을 공개하며, 한국인의 self-report 개성 정보가 레이블링된 대규모 데이터셋 구축 결과를 바탕으로 몰입도 높은 개성을 발현하기 위한 정보 및 에이전트의 자기 개선 알고리즘에 활용하기 위한 연구
 
 <br/>
